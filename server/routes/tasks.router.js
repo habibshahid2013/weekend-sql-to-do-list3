@@ -25,9 +25,19 @@ todoRouter.post('/', (req, res) => {
 
 });
 
-
 // GET
+todoRouter.get('/', (req, res) => {
+    let sqlQuery = `SELECT * FROM "todo";`
+    pool.query(sqlQuery)
+        .then((response) => {
+            res.send(response.rows);
+        })
+        .catch((err) => {
+            res.sendStatus(500)
+            console.log("we have an error", err);
+        })
 
+});
 
 
 // PUT
