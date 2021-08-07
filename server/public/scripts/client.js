@@ -44,13 +44,23 @@ function getTasks() {
 //
 function renderDom(res){
     $('#seeTasks').empty();
+
     for (task of res) {
-        //It's important to note the the data ID is created
-        //In the deleteTask function.
+    //It's important to note the the data ID is created
+    //In the deleteTask function.
+        if (task.iscompleted === false){
         $('#seeTasks').append(`
-         <li data-id ="${task.id}"> ${task.task}
-         <button class="completeBtn" >Complete</button>
-         <button class="deleteBtn" >Delete</button></li>`)
+            <li data-id ="${task.id}"> ${task.task}
+            <button class="completeBtn" >Complete</button>
+            <button class="deleteBtn" >Delete</button></li>`)
+        }
+        else if (task.iscompleted === true){
+            $('#seeTasks').append(`
+            <li data-id ="${task.id}"> ${task.task}
+            <button class="incompleteBtn" >Complete</button>
+            <button class="deleteBtn" >Delete</button></li>`)
+        }
+
     }
 };
 
@@ -72,10 +82,10 @@ function completeTask() {
     let id = $(this).closest('li').data('id');
     let iscompleted = $(this).closest('li').data('iscompleted');
 
-    if (iscompleted === true ) {
-        iscompleted = false;
-    } else if (iscompleted === false) {
+    if (iscompleted === false || iscompleted === null ) {
         iscompleted = true;
+    } else if (iscompleted === true || iscompleted === null ) {
+        iscompleted = false;
     }
 
     $.ajax({

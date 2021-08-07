@@ -1,3 +1,31 @@
 body{
     background-color: saddlebrown;
 }
+
+.incompleteBtn{
+    background-color: slateblue;
+    border-radius: 12px
+
+}
+
+.incompleteBtn.toggled{
+    background-color: red ;
+    border-radius: 12px
+
+}
+
+.completeBtn {
+    background-color: rgb(255,242,0);
+    border-radius: 12px
+}
+
+.completeBtn.toggled {
+    background-color: rgb(244,113,33);
+    border-radius: 12px
+}
+
+.headerClass{
+    text-align: center;
+    text-transform: inherit;
+   
+}
