@@ -9,15 +9,15 @@ function readyReady(){
 function addTask() {
     let newTask = {
         task: $("#taskInput").val(),
-        completed: false
+        iscompleted: false
     }
     $.ajax({
         method: 'POST',
         url: '/tasks',
         data: newTask
     }).then((res) => {
-        getTasks();
+    
     }).catch((err) => {
         console.log('error on client side', err)
     });
-}
+};
