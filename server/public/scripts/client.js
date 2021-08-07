@@ -2,12 +2,17 @@ $(document).ready(readyReady)
 
 function readyReady(){
 
-    //Set up Add Button
-    $("#addBtn").on('click', addTask);
+    addClickHandlers()
     getTasks();
-    $("deleteBtn").on('click', deleteTask)
-    $("completeBtn").on('click', completeTask)
+   
 }
+
+function addClickHandlers() {
+    $("#addBtn").on('click', addTask);
+    $(document).on('click', ".deleteBtn", deleteTask);
+    $(document).on('click', ".completeBtn", completeTask);
+    // TODO - Add code for edit & delete buttons
+};
 
 function addTask() {
     let newTask = {
@@ -36,31 +41,52 @@ function getTasks() {
         console.log('GET is not appending', err);      
 })
 };
-
+//
 function renderDom(res){
     $('#seeTasks').empty();
     for (task of res) {
+        //It's important to note the the data ID is created
+        //In the deleteTask function.
         $('#seeTasks').append(`
-         <li data-id ="data"> ${task.task} 
-         <button class ="completeBtn" ></button>
-         <button class ="deleteBtn" ></button></li>`)
+         <li data-id ="${task.id}"> ${task.task}
+         <button class="completeBtn" >Complete</button>
+         <button class="deleteBtn" >Delete</button></li>`)
     }
 };
 
 function deleteTask() {
-    let taskID = $(this).closest('tr').data('id')
-    console.log('testing ID', taskID);
+    let taskId = $(this).closest('li').data('id')
+    console.log('testing ID', taskId);
     $.ajax({
         type: 'DELETE',
-        url: `/task/${taskID}`
+        url: `/tasks/${taskId}`
     }).then(function (res) {
         console.log('delete is working 🙀');
-        getKoalas()
-
+        getTasks()
     })
-}
+};
 
 
-function completeTask(){
+
+function completeTask() {
+    let id = $(this).closest('li').data('id');
+    let iscompleted = $(this).closest('li').data('iscompleted');
+
+    if (iscompleted === true ) {
+        iscompleted = false;
+    } else if (iscompleted === false) {
+        iscompleted = true;
+    }
+
+    $.ajax({
+        url: `/tasks/${id}`,
+        type: 'PUT',
+        data: { iscompleted: iscompleted }
+    }).then(function (response) {
+        console.log('response', response);
+        getTasks();
+    }).catch(function (error) {
+        console.log('error in GET', error);
+    });
 
 }
