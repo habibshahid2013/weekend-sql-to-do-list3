@@ -5,11 +5,11 @@ const todoRouter = express.Router();
 // DB CONNECTION
 
 
+//POST
+
+
 // GET
 
-
-
-// POST
 
 
 // PUT
