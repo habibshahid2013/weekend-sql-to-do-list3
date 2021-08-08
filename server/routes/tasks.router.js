@@ -71,7 +71,7 @@ todoRouter.put('/:id', (req, res) => {
 todoRouter.delete('/:id', (req, res) => {
     console.log('got them to delete', req.params.id);
     let idToDelete = req.params.id
-    let sqlQuery = 'DELETE FROM "todo" WHERE id=$1;'
+    let sqlQuery = `DELETE FROM "todo" WHERE id=$1;`
     let sqlParams = [idToDelete]
     pool.query(sqlQuery, sqlParams)
         .then((dbRes) => {

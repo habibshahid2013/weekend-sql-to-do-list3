@@ -1,31 +1,40 @@
-body{
-    background-color: saddlebrown;
-}
-
 .incompleteBtn{
-    background-color: slateblue;
+    background-color: green;
     border-radius: 12px
 
 }
-
-.incompleteBtn.toggled{
-    background-color: red ;
-    border-radius: 12px
-
-}
-
 .completeBtn {
-    background-color: rgb(255,242,0);
+    background-color: grey ;
     border-radius: 12px
 }
 
-.completeBtn.toggled {
-    background-color: rgb(244,113,33);
-    border-radius: 12px
-}
 
 .headerClass{
     text-align: center;
     text-transform: inherit;
+    text-transform: capitalize;
+    color: rgb(49, 66, 218);
+    border-style: outset;
    
+}
+
+#seeTasks{
+   text-align: center;
+   border-style: double;
+
+}
+
+li{
+    border-style: double;
+}
+
+#addBtn{
+    text-align: center;
+    border-style: double;
+
+}
+
+#taskInput{
+    text-align: center;
+    border-style: double;
 }

@@ -28,6 +28,7 @@ function addTask() {
     }).catch((err) => {
         console.log('error on client side', err)
     });
+    $('#taskInput').empty();
 };
 
 function getTasks() {
@@ -50,15 +51,15 @@ function renderDom(res){
     //In the deleteTask function.
         if (task.iscompleted === false){
         $('#seeTasks').append(`
-            <li data-id ="${task.id}"> ${task.task}
-            <button class="completeBtn" >Complete</button>
+            <li class="list-group-item" data-id="${task.id}" data-iscompleted="${task.iscompleted}"> ${task.task}
+            <button  class="completeBtn" >Complete</button>
             <button class="deleteBtn" >Delete</button></li>`)
         }
         else if (task.iscompleted === true){
             $('#seeTasks').append(`
-            <li data-id ="${task.id}"> ${task.task}
+            <li class="list-group-item" data-id="${task.id}" data-iscompleted="${task.iscompleted}"> ${task.task}
             <button class="incompleteBtn" >Complete</button>
-            <button class="deleteBtn" >Delete</button></li>`)
+            <button  class="deleteBtn" >Delete</button></li>`)
         }
 
     }
@@ -84,7 +85,7 @@ function completeTask() {
 
     if (iscompleted === false || iscompleted === null ) {
         iscompleted = true;
-    } else if (iscompleted === true || iscompleted === null ) {
+    } else if (iscompleted === true) {
         iscompleted = false;
     }
 
@@ -100,3 +101,4 @@ function completeTask() {
     });
 
 }
+
