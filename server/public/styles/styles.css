@@ -1,11 +1,17 @@
 .incompleteBtn{
     background-color: green;
-    border-radius: 12px
+    border-radius: 12px;
+    float: right;
 
 }
 .completeBtn {
     background-color: grey ;
-    border-radius: 12px
+    border-radius: 12px;
+    float: right;
+}
+.completeBtn:hover{
+    background-color: green;
+
 }
 
 
@@ -19,7 +25,7 @@
 }
 
 #seeTasks{
-   text-align: center;
+   text-align: left;
    border-style: double;
 
 }
@@ -37,4 +43,13 @@ li{
 #taskInput{
     text-align: center;
     border-style: double;
+}
+
+.deleteBtn:hover{
+    background-color: red;
+    
+}
+
+.deleteBtn{
+    float: right;
 }

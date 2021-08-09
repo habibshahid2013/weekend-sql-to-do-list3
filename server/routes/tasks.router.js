@@ -6,6 +6,7 @@ const todoRouter = express.Router();
 
 
 //POST
+//Notice how the URL only uses the /.
 todoRouter.post('/', (req, res) => {
     let task = req.body;
     let sqlQuery = `
@@ -16,7 +17,7 @@ todoRouter.post('/', (req, res) => {
     pool.query(sqlQuery, sqlParams)
         .then((result) => {
             console.log("success in posting to DB");
-            res.sendStatus(200);
+            res.sendStatus(201);
         })
         .catch((err) => {
             res.sendStatus(500)
